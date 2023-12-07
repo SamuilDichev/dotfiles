@@ -5,15 +5,18 @@ return {
     dependencies = {
         { "hrsh7th/cmp-nvim-lsp" },
         { "williamboman/mason-lspconfig.nvim" },
+        { "folke/trouble.nvim" },
     },
     config = function()
         local lsp_zero = require("lsp-zero")
+        local custom_keymap = require("samuild.keymap")
         lsp_zero.extend_lspconfig()
 
         lsp_zero.on_attach(function(client, bufnr)
             -- see :help lsp-zero-keybindings
-            -- to learn the available actions
-            lsp_zero.default_keymaps({ buffer = bufnr })
+            -- to learn the available default actions which can be set with:
+            -- lsp_zero.default_keymaps({ buffer = bufnr })
+            custom_keymap.add_lsp_keymap_to_buffer(bufnr)
         end)
 
         require("mason").setup({})

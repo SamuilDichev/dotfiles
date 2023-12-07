@@ -6,8 +6,8 @@ return {
         git = {
             enable = true,
         },
-
         renderer = {
+            group_empty = true,
             highlight_git = true,
             icons = {
                 show = {
@@ -15,7 +15,6 @@ return {
                 },
             },
         },
-
         view = {
             adaptive_size = true,
             width = 40,
