@@ -1,8 +1,19 @@
 # dotfiles
 ## General
-Clone this repo with `git clone --recurse-submodules <this-repo-url>`
+Clone this repo with
+```
+git clone --recurse-submodules <this-repo-url>
+```
 
-Update it with `git pull --recurse-submodules`
+Update it with
+```
+git pull --recurse-submodules
+```
+
+If the repo was already cloned without submodules, you might need to init the modules before you can pull them
+```
+git submodule update --init --recursive
+```
 
 ## NeoVim
 - Install version >= 0.9.0
