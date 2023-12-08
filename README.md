@@ -16,9 +16,9 @@ git submodule update --init --recursive
 ```
 
 ## Prerequisites
-- [ripgrep](https://github.com/BurntSushi/ripgrep#installation) - e.g. `sudo apt install ripgrep`
-- NodeJS - e.g. `curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && sudo apt-get install -y nodejs`
-- snapd (_Optional_) - e.g. `sudo apt install snapd`. Can be used to install NeoVim via `snap install nvim --stable --classic`
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+- [NodeJS](https://github.com/nodesource/distributions#installation-instructions)
+- [snapd](https://snapcraft.io/docs/installing-snap-on-ubuntu) (_Optional_) - Can be used to install NeoVim via `snap install nvim --stable --classic`
 
 ## NeoVim
 - Install version >= 0.9.0
