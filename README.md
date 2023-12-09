@@ -15,6 +15,11 @@ If the repo was already cloned without submodules, you might need to init the mo
 git submodule update --init --recursive
 ```
 
+## Prerequisites
+- [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
+- [NodeJS](https://github.com/nodesource/distributions#installation-instructions)
+- [snapd](https://snapcraft.io/docs/installing-snap-on-ubuntu) (_Optional_) - Can be used to install NeoVim via `snap install nvim --stable --classic`
+
 ## NeoVim
 - Install version >= 0.9.0
 - Setup config - `ln -s <this-repo-path>/.config/nvim ~/.config/`
