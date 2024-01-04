@@ -3,10 +3,12 @@ local M = {}
 -- General
 vim.keymap.set("n", ";", ":")
 
-vim.keymap.set("i", "<C-h>", "<Left>")                                                   -- Regular movement but in insert mode
-vim.keymap.set("i", "<C-j>", "<Down>")                                                   -- ^
-vim.keymap.set("i", "<C-k>", "<Up>")                                                     -- ^
-vim.keymap.set("i", "<C-l>", "<Right>")                                                  -- ^
+-- tmux-navigator plugin overwrites these
+-- vim.keymap.set("i", "<C-h>", "<Left>")                                                   -- Regular movement but in insert mode
+-- vim.keymap.set("i", "<C-j>", "<Down>")                                                   -- ^
+-- vim.keymap.set("i", "<C-k>", "<Up>")                                                     -- ^
+-- vim.keymap.set("i", "<C-l>", "<Right>")                                                  -- ^
+
 vim.keymap.set("n", "<C-h>", "<C-w>h")                                                   -- Move between windows/splits
 vim.keymap.set("n", "<C-j>", "<C-w>j")                                                   -- ^
 vim.keymap.set("n", "<C-k>", "<C-w>k")                                                   -- ^
