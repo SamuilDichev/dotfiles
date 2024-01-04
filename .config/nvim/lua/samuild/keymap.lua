@@ -45,6 +45,17 @@ M.add_lsp_keymap_to_buffer = function(bufnr)
     vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts)
 end
 
+-- Marks/bookmarks mappings
+M.marks_mappings = {
+    set = "m",            -- Waits for 1 char input, sets a mark with that name
+    delete = "dm",        -- Waits for 1 char input, deletes a mark with that name
+    toggle = "<leader>m", -- Toggles a mark at cursor using the next available name (self-assigns name)
+    next = "]m",
+    prev = "[m",
+    delete_line = "dm.",    -- Deletes all marks on current line
+    delete_buf = "dm<tab>", -- Deletes all marks in current buffer
+}
+
 -- Nvim Tree (file browser)
 vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>")
 
@@ -61,8 +72,9 @@ vim.keymap.set("n", "<leader>X", "<cmd> BufferRestore<CR>")
 vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>fa", "<cmd> Telescope live_grep <CR>")
 vim.keymap.set("n", "<leader>fg", "<cmd> Telescope git_status <CR>")  -- git diff
-vim.keymap.set("n", "<leader>fc", "<cmd> Telescope git_commits <CR>")  -- git commits
+vim.keymap.set("n", "<leader>fc", "<cmd> Telescope git_commits <CR>") -- git commits
 vim.keymap.set("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
+vim.keymap.set("n", "<leader>'", "<cmd> Telescope marks <CR>")
 vim.keymap.set("n", "<C-f>", "<cmd> Telescope current_buffer_fuzzy_find <CR>")
 
 -- Undo Tree
@@ -105,6 +117,6 @@ vim.keymap.set("n", "[c",
 vim.keymap.set("n", "rh", function() require("gitsigns").reset_hunk() end)
 vim.keymap.set("n", "td", function() require("gitsigns").toggle_deleted() end)
 vim.keymap.set("n", "gb", function() package.loaded.gitsigns.blame_line() end)
-vim.keymap.set("n", "ph", function() require("gitsigns").preview_hunk() end)
+-- vim.keymap.set("n", "ph", function() require("gitsigns").preview_hunk() end)
 
 return M
