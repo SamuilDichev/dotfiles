@@ -3,16 +3,16 @@ local M = {}
 -- General
 vim.keymap.set("n", ";", ":")
 
--- tmux-navigator plugin overwrites these
--- vim.keymap.set("i", "<C-h>", "<Left>")                                                   -- Regular movement but in insert mode
--- vim.keymap.set("i", "<C-j>", "<Down>")                                                   -- ^
--- vim.keymap.set("i", "<C-k>", "<Up>")                                                     -- ^
--- vim.keymap.set("i", "<C-l>", "<Right>")                                                  -- ^
+vim.keymap.set("i", "<C-h>", "<Left>")                                                   -- Regular movement but in insert mode
+vim.keymap.set("i", "<C-j>", "<Down>")                                                   -- ^
+vim.keymap.set("i", "<C-k>", "<Up>")                                                     -- ^
+vim.keymap.set("i", "<C-l>", "<Right>")                                                  -- ^
 
-vim.keymap.set("n", "<C-h>", "<C-w>h")                                                   -- Move between windows/splits
-vim.keymap.set("n", "<C-j>", "<C-w>j")                                                   -- ^
-vim.keymap.set("n", "<C-k>", "<C-w>k")                                                   -- ^
-vim.keymap.set("n", "<C-l>", "<C-w>l")                                                   -- ^
+-- tmux-navigator plugin overwrites these
+-- vim.keymap.set("n", "<C-h>", "<C-w>h")                                                   -- Move between windows/splits
+-- vim.keymap.set("n", "<C-j>", "<C-w>j")                                                   -- ^
+-- vim.keymap.set("n", "<C-k>", "<C-w>k")                                                   -- ^
+-- vim.keymap.set("n", "<C-l>", "<C-w>l")                                                   -- ^
 
 vim.keymap.set("n", "n", "nzzzv")                                                        -- next match and center the view
 vim.keymap.set("n", "N", "Nzzzv")                                                        -- ^
