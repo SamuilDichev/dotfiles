@@ -16,6 +16,7 @@ vim.opt.scrolloff = 8 -- scrolling doesn't hide all lines
 vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
+vim.o.splitbelow = true
 
 -- Sessions
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"

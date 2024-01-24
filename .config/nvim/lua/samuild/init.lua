@@ -11,9 +11,3 @@ vim.api.nvim_create_autocmd("WinLeave", {
         end
     end,
 })
-
--- When fugitive window is opened, move it to bottom
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "fugitive",
-    command = "wincmd J"
-})
