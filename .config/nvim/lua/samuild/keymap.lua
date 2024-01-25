@@ -47,6 +47,20 @@ M.add_lsp_keymap_to_buffer = function(bufnr)
     vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts)
 end
 
+-- LSP keymap for suggestions - imported by cmp config
+M.add_lsp_suggestion_keymap = function(cmp)
+    local cmp_select = { behavior = cmp.SelectBehavior.Select }
+    return {
+        -- ['<C-Space>'] = cmp.mapping.complete(), -- starts auto-completing
+        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select), -- cycle back through suggestions
+        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select), -- cycle forward through suggestions
+        ['<cr>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+        }),
+    }
+end
+
 -- Marks/bookmarks mappings
 M.marks_mappings = {
     set = "m",            -- Waits for 1 char input, sets a mark with that name
