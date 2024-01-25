@@ -47,7 +47,7 @@ M.add_lsp_keymap_to_buffer = function(bufnr)
     vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts)
 end
 
--- LSP keymap for suggestions - imported by cmp config
+-- LSP keymap for suggestions drop-down - imported by cmp config
 M.add_lsp_suggestion_keymap = function(cmp)
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
     return {
