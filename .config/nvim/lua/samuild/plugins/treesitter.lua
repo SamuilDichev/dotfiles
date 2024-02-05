@@ -17,6 +17,8 @@ return {
                 "html",
                 "css",
                 "python",
+                "rust",
+                "zig",
                 "markdown",
                 "markdown_inline",
                 "regex",
