@@ -24,8 +24,6 @@ vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])  
 vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- edit work under cursor
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                                             -- move selection
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")                                             -- ^
-vim.keymap.set("v", "H", "dhPgvhoho")                                                    -- ^
-vim.keymap.set("v", "L", "dlPgvlolo")                                                    -- ^
 vim.keymap.set("v", "<Tab>", ">gv")                                                      -- indent selection
 vim.keymap.set("v", "<S-Tab>", "<gv")                                                    -- ^
 
@@ -55,7 +53,7 @@ M.add_lsp_suggestion_keymap = function(cmp)
         ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select), -- cycle back through suggestions
         ['<Tab>'] = cmp.mapping.select_next_item(cmp_select), -- cycle forward through suggestions
         ['<cr>'] = cmp.mapping.confirm({
-            behavior = cmp.ConfirmBehavior.Replace,
+            behavior = cmp.ConfirmBehavior.Insert,
             select = false,
         }),
     }
@@ -78,6 +76,7 @@ vim.keymap.set("i", "<C-j>", "copilot#Accept('<CR>')", { expr = true, replace_ke
 
 -- Nvim Tree (file browser)
 vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set("n", "<F1>", "<cmd> NvimTreeToggle <CR>")
 
 -- Tabs
 vim.keymap.set("n", "<Tab>", "<cmd> BufferNext<CR>") -- cycle tabs
@@ -107,7 +106,7 @@ vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz")
 
 -- Trouble (diagnostics)
-vim.keymap.set("n", "F2", function() require("trouble").toggle "document_diagnostics" end)
+vim.keymap.set("n", "<F2>", function() require("trouble").toggle "document_diagnostics" end)
 
 -- Comment
 vim.keymap.set("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end)

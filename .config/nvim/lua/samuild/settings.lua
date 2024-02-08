@@ -25,6 +25,6 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.opt.updatetime = 50
 
 -- Indent
-vim.opt.list = true
+-- vim.opt.list = true
 -- vim.opt.listchars:append("space:·")
 vim.g.pyindent_open_paren = "shiftwidth()"
