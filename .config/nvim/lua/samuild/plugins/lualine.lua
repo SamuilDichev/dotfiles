@@ -6,15 +6,11 @@ return {
     },
     config = function()
         local function get_macro_recording()
-            if vim.fn.reg_recording() == "" then
-                return ""
-            end
-
-            return " " .. vim.fn.reg_recording()
+            return vim.fn.reg_recording()
         end
 
         local function show_active_lsp()
-            local msg = "NO LSP ACTIVE"
+            local msg = "NO LSP"
             local buf_ft = vim.api.nvim_get_option_value("filetype", {})
             local clients = vim.lsp.get_clients()
             if next(clients) == nil then
@@ -38,11 +34,16 @@ return {
             },
             sections = {
                 lualine_c = {
-                    require("auto-session.lib").current_session_name,
+                    {
+                        require("auto-session.lib").current_session_name,
+                        separator = "",
+                    },
+                    { "%=", separator = "" },
                     {
                         "macro-recording",
                         fmt = get_macro_recording,
-                        color = { fg = "red" },
+                        icon = { "", color = { fg = "red" } },
+                        separator = "",
                     },
                 },
                 lualine_x = {
@@ -50,7 +51,7 @@ return {
                     {
                         "lsp",
                         fmt = show_active_lsp,
-                        icon = "'",
+                        icon = { "'", color = { fg = "limegreen" } },
                     },
                     "filetype",
                 },
