@@ -12,23 +12,12 @@ return {
             presets = {
                 command_palette = true,
                 inc_rename = true,
-                -- bottom_search = true,
             },
             routes = {
-                {
-                    -- hide "written" messages
-                    filter = {
-                        event = "msg_show",
-                        kind = "",
-                        find = "written",
-                    },
-                    opts = { skip = true },
-                },
-                -- Show notification when starting macro recording
-                -- {
-                --   view = "notify",
-                --   filter = { event = "msg_showmode" },
-                -- },
+                -- hide messages containing these strings
+                { filter = { event = "msg_show", kind = "", find = "written", }, opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "more lines", }, opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "fewer lines", }, opts = { skip = true } },
             },
             lsp = {
                 hover = {
