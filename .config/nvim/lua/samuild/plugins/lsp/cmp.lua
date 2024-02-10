@@ -2,11 +2,12 @@ return {
     "hrsh7th/nvim-cmp",
     lazy = false,
     dependencies = {
-        { "hrsh7th/cmp-nvim-lsp" }, -- source
-        { "hrsh7th/cmp-buffer" },   -- source
-        { "hrsh7th/cmp-path" },     -- source
-        { "hrsh7th/cmp-cmdline" },  -- source
-        { "onsails/lspkind.nvim" }, -- icons in completion dropdown
+        { "hrsh7th/cmp-nvim-lsp" },   -- source
+        { "hrsh7th/cmp-buffer" },     -- source
+        { "hrsh7th/cmp-path" },       -- source
+        { "hrsh7th/cmp-cmdline" },    -- source
+        -- { "zbirenbaum/copilot-cmp" }, -- source
+        { "onsails/lspkind.nvim" },   -- icons in completion dropdown
     },
     config = function()
         local cmp = require('cmp')
@@ -16,7 +17,11 @@ return {
         -- Completion global settings
         cmp.setup({
             formatting = {
-                format = lspkind.cmp_format({}),
+                format = lspkind.cmp_format({
+                    symbol_map = {
+                        Copilot = "",
+                    },
+                }),
             },
             window = {
                 completion = cmp.config.window.bordered(),
@@ -26,8 +31,8 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'copilot' },
                 -- { name = "treesitter" },
-                { name = "buffer" },
-                { name = 'path' },
+                { name = "buffer", max_item_count = 5 },
+                { name = 'path', max_item_count = 5},
             },
             mapping = cmp.mapping.preset.insert(mapping)
         })

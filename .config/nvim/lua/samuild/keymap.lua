@@ -79,10 +79,6 @@ M.marks_mappings = {
     delete_buf = "dm<tab>", -- Deletes all marks in current buffer
 }
 
--- Github Copilot
-vim.g.copilot_no_tab_map = true
-vim.keymap.set("i", "<C-j>", "copilot#Accept('<CR>')", { expr = true, replace_keycodes = false, desc = "Copilot cmp" })
-
 -- Nvim Tree (file browser)
 vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
 vim.keymap.set("n", "<F1>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
