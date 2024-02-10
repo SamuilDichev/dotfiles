@@ -16,8 +16,8 @@ return {
             routes = {
                 -- hide messages containing these strings
                 { filter = { event = "msg_show", kind = "", find = "written", }, opts = { skip = true } },
-                { filter = { event = "msg_show", kind = "", find = "more lines", }, opts = { skip = true } },
-                { filter = { event = "msg_show", kind = "", find = "fewer lines", }, opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "%d+ more line", }, opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "%d+ fewer lines", }, opts = { skip = true } },
             },
             lsp = {
                 hover = {

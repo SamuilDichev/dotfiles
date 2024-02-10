@@ -90,11 +90,11 @@ vim.keymap.set("n", "<leader>X", "<cmd> BufferRestore<CR>")
 -- Telescope
 vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>")
 vim.keymap.set("n", "<leader>fa", "<cmd> Telescope live_grep <CR>")
-vim.keymap.set("n", "<leader>fg", "<cmd> Telescope git_status <CR>")  -- git diff
-vim.keymap.set("n", "<leader>fc", "<cmd> Telescope git_commits <CR>") -- git commits
-vim.keymap.set("n", "<leader>fh", "<cmd> Telescope help_tags <CR>")
-vim.keymap.set("n", "<leader>'", "<cmd> Telescope marks <CR>")
-vim.keymap.set("n", "<C-f>", "<cmd> Telescope current_buffer_fuzzy_find <CR>")
+vim.keymap.set("n", "gs", "<cmd> Telescope git_status <CR>")  -- git diff
+vim.keymap.set("n", "gc", "<cmd> Telescope git_commits <CR>") -- git commits
+vim.keymap.set("n", "<F2>", "<cmd> Telescope marks <CR>")
+vim.keymap.set("n", "<F4>", "<cmd> Telescope notify <CR>")
+vim.keymap.set("n", "<F5>", "<cmd> Telescope help_tags <CR>")
 
 -- Undo Tree
 vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>")
@@ -106,7 +106,7 @@ vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz")
 
 -- Trouble (diagnostics)
-vim.keymap.set("n", "<F2>", function() require("trouble").toggle "document_diagnostics" end)
+vim.keymap.set("n", "<F3>", function() require("trouble").toggle "document_diagnostics" end)
 
 -- Comment
 vim.keymap.set("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end)
