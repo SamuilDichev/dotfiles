@@ -6,10 +6,10 @@ vim.keymap.set("n", ";", ":")
 vim.keymap.set("n", "L", "$", { desc = "Move to END of line" })
 vim.keymap.set("n", "H", "^", { desc = "Move to START of line" })
 
-vim.keymap.set("i", "<C-h>", "<Left>")  -- Regular movement but in insert mode
-vim.keymap.set("i", "<C-j>", "<Down>")  -- ^
-vim.keymap.set("i", "<C-k>", "<Up>")    -- ^
-vim.keymap.set("i", "<C-l>", "<Right>") -- ^
+-- vim.keymap.set("i", "<C-h>", "<Left>")  -- Regular movement but in insert mode
+-- vim.keymap.set("i", "<C-j>", "<Down>")  -- ^
+-- vim.keymap.set("i", "<C-k>", "<Up>")    -- ^
+-- vim.keymap.set("i", "<C-l>", "<Right>") -- ^
 
 vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Movement + Center view
 vim.keymap.set("n", "<C-d>", "<C-d>zz") -- ^
@@ -28,7 +28,6 @@ vim.keymap.set("n", "N", "Nzzzv")       -- ^
 -- vim.keymap.set("n", "<C-l>", "<C-w>l")                                                   -- ^
 
 vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy selection to system clipboard" })
-vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Copy line to system clipboard" })
 vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete w/o copy" })
 vim.keymap.set("v", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Paste and replace without copy" })
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Replace under cursor" })
@@ -49,7 +48,7 @@ M.add_lsp_keymap_to_buffer = function(bufnr)
     vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts("[LSP] Previous diagnostic"))
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("[LSP] Hover"))
-    vim.keymap.set({ "n", "i" }, "<C-g>", vim.lsp.buf.signature_help, opts("[LSP] Signature help"))
+    vim.keymap.set({ "n", "i" }, "<C-k>", vim.lsp.buf.signature_help, opts("[LSP] Signature help"))
 
     vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts("[LSP] Code action"))
     vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts("[LSP] Rename"))
