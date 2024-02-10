@@ -9,5 +9,18 @@ return {
     opts = {
         focus_on_close = 'right',
         exclude_ft = { "fugitive" },
+        icons = {
+            -- diagnostics = {
+            --     [vim.diagnostic.severity.ERROR] = { enabled = true },
+            --     [vim.diagnostic.severity.WARN] = { enabled = true },
+            --     [vim.diagnostic.severity.INFO] = { enabled = true },
+            --     [vim.diagnostic.severity.HINT] = { enabled = true },
+            -- },
+            gitsigns = {
+                added = { enabled = true },
+                changed = { enabled = true },
+                deleted = { enabled = true },
+            },
+        },
     },
 }
