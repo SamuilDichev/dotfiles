@@ -3,10 +3,23 @@ local M = {}
 -- General
 vim.keymap.set("n", ";", ":")
 
-vim.keymap.set("i", "<C-h>", "<Left>")                                                   -- Regular movement but in insert mode
-vim.keymap.set("i", "<C-j>", "<Down>")                                                   -- ^
-vim.keymap.set("i", "<C-k>", "<Up>")                                                     -- ^
-vim.keymap.set("i", "<C-l>", "<Right>")                                                  -- ^
+vim.keymap.set("n", "L", "$", { desc = "Move to END of line" })
+vim.keymap.set("n", "H", "^", { desc = "Move to START of line" })
+
+vim.keymap.set("i", "<C-h>", "<Left>")  -- Regular movement but in insert mode
+vim.keymap.set("i", "<C-j>", "<Down>")  -- ^
+vim.keymap.set("i", "<C-k>", "<Up>")    -- ^
+vim.keymap.set("i", "<C-l>", "<Right>") -- ^
+
+vim.keymap.set("n", "<C-u>", "<C-u>zz") -- Movement + Center view
+vim.keymap.set("n", "<C-d>", "<C-d>zz") -- ^
+vim.keymap.set("n", "{", "{zz")         -- ^
+vim.keymap.set("n", "}", "}zz")         -- ^
+vim.keymap.set("n", "G", "Gzz")         -- ^
+vim.keymap.set("n", "<C-i>", "<C-i>zz") -- ^
+vim.keymap.set("n", "<C-o>", "<C-o>zz") -- ^
+vim.keymap.set("n", "n", "nzzzv")       -- ^
+vim.keymap.set("n", "N", "Nzzzv")       -- ^
 
 -- tmux-navigator plugin overwrites these
 -- vim.keymap.set("n", "<C-h>", "<C-w>h")                                                   -- Move between windows/splits
@@ -14,18 +27,16 @@ vim.keymap.set("i", "<C-l>", "<Right>")                                         
 -- vim.keymap.set("n", "<C-k>", "<C-w>k")                                                   -- ^
 -- vim.keymap.set("n", "<C-l>", "<C-w>l")                                                   -- ^
 
-vim.keymap.set("n", "n", "nzzzv")                                                        -- next match and center the view
-vim.keymap.set("n", "N", "Nzzzv")                                                        -- ^
-vim.keymap.set("v", "<leader>y", '"+y')                                                  -- copy selection to system clipboard (as opposed to vim clipboard)
-vim.keymap.set("n", "<leader>Y", '"+Y')                                                  -- copy line to system clipboard (as opposed to vim clipboard)
-vim.keymap.set("n", "<leader>d", '"_d')                                                  -- blackhole delete (no cut, i.e. doesn't overwrite clipboard)
-vim.keymap.set("v", "p", 'p:let @+=@0<CR>:let @"=@0<CR>')                                -- don't copy on replacing text
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]])           -- replace word under cursor
-vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- edit work under cursor
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")                                             -- move selection
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")                                             -- ^
-vim.keymap.set("v", "<Tab>", ">gv")                                                      -- indent selection
-vim.keymap.set("v", "<S-Tab>", "<gv")                                                    -- ^
+vim.keymap.set("v", "<leader>y", '"+y', { desc = "Copy selection to system clipboard" })
+vim.keymap.set("n", "<leader>Y", '"+Y', { desc = "Copy line to system clipboard" })
+vim.keymap.set("n", "<leader>d", '"_d', { desc = "Delete w/o copy" })
+vim.keymap.set("v", "p", 'p:let @+=@0<CR>:let @"=@0<CR>', { desc = "Paste and replace without copy" })
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>//gI<Left><Left><Left>]], { desc = "Replace under cursor" })
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], { desc = "Edit under cursor" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent selection" })
+vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Unindent selection" })
 
 -- LSP keymap - imported by lspconfig, sets keymap only if an LSP is loaded in a given buffer, otherwise remains unset
 M.add_lsp_keymap_to_buffer = function(bufnr)
@@ -51,7 +62,7 @@ M.add_lsp_suggestion_keymap = function(cmp)
     return {
         -- ['<C-Space>'] = cmp.mapping.complete(), -- starts auto-completing
         ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select), -- cycle back through suggestions
-        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select), -- cycle forward through suggestions
+        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),   -- cycle forward through suggestions
         ['<cr>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = false,
@@ -72,49 +83,49 @@ M.marks_mappings = {
 
 -- Github Copilot
 vim.g.copilot_no_tab_map = true
-vim.keymap.set("i", "<C-j>", "copilot#Accept('<CR>')", { expr = true, replace_keycodes = false })
+vim.keymap.set("i", "<C-j>", "copilot#Accept('<CR>')", { expr = true, replace_keycodes = false, desc = "Copilot cmp" })
 
 -- Nvim Tree (file browser)
-vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>")
-vim.keymap.set("n", "<F1>", "<cmd> NvimTreeToggle <CR>")
+vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
+vim.keymap.set("n", "<F1>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
 
 -- Tabs
-vim.keymap.set("n", "<Tab>", "<cmd> BufferNext<CR>") -- cycle tabs
-vim.keymap.set("n", "<S-Tab>", "<cmd> BufferPrevious<CR>")
-vim.keymap.set("n", "<leader><Tab>", "<cmd> BufferPick<CR>")
-vim.keymap.set("n", "]b", "<cmd> BufferMoveNext<CR>")     -- move curr tab
-vim.keymap.set("n", "[b", "<cmd> BufferMovePrevious<CR>") -- ^
-vim.keymap.set("n", "<leader>x", "<cmd> confirm BufferClose<CR>")
-vim.keymap.set("n", "<leader>X", "<cmd> BufferRestore<CR>")
+vim.keymap.set("n", "<Tab>", "<cmd> BufferNext<CR>", { desc = "Next tab" })
+vim.keymap.set("n", "<S-Tab>", "<cmd> BufferPrevious<CR>", { desc = "Previous tab" })
+vim.keymap.set("n", "<leader><Tab>", "<cmd> BufferPick<CR>", { desc = "Pick tab by letter" })
+vim.keymap.set("n", "]b", "<cmd> BufferMoveNext<CR>", { desc = "Move tab forward" })
+vim.keymap.set("n", "[b", "<cmd> BufferMovePrevious<CR>", { desc = "Move tab backward" })
+vim.keymap.set("n", "<leader>x", "<cmd> confirm BufferClose<CR>", { desc = "Close tab" })
+vim.keymap.set("n", "<leader>X", "<cmd> BufferRestore<CR>", { desc = "Restore closed tab" })
 
 -- Telescope
-vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>")
-vim.keymap.set("n", "<leader>fa", "<cmd> Telescope live_grep <CR>")
-vim.keymap.set("n", "gs", "<cmd> Telescope git_status <CR>")  -- git diff
-vim.keymap.set("n", "gc", "<cmd> Telescope git_commits <CR>") -- git commits
-vim.keymap.set("n", "<F2>", "<cmd> Telescope marks <CR>")
-vim.keymap.set("n", "<F4>", "<cmd> Telescope notify <CR>")
-vim.keymap.set("n", "<F5>", "<cmd> Telescope help_tags <CR>")
+vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "[Telescope] Find files" })
+vim.keymap.set("n", "<leader>fa", "<cmd> Telescope live_grep <CR>", { desc = "[Telescope] Grep ALL files" })
+vim.keymap.set("n", "gs", "<cmd> Telescope git_status <CR>", { desc = "[Telescope] Git diff" })
+vim.keymap.set("n", "gc", "<cmd> Telescope git_commits <CR>", { desc = "[Telescope] Git commits" })
+vim.keymap.set("n", "<F2>", "<cmd> Telescope marks <CR>", { desc = "[Telescope] Marks" })
+vim.keymap.set("n", "<F4>", "<cmd> Telescope notify <CR>", { desc = "[Telescope] Notifications" })
+vim.keymap.set("n", "<F5>", "<cmd> Telescope help_tags <CR>", { desc = "[Telescope] Help tags" })
 
 -- Undo Tree
-vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>")
+vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>", { desc = "Toggle undo tree" })
 
 -- Quickfix and location lists (need populating by something)
-vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz")
+vim.keymap.set("n", "]q", "<cmd>cnext<CR>zz", { desc = "Next quickfix" })
+vim.keymap.set("n", "[q", "<cmd>cprev<CR>zz", { desc = "Previous quickfix" })
+vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz", { desc = "Next in loc list" })
+vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz", { desc = "Previous in loc list" })
 
 -- Trouble (diagnostics)
-vim.keymap.set("n", "<F3>", function() require("trouble").toggle "document_diagnostics" end)
+vim.keymap.set("n", "<F3>", function() require("trouble").toggle "document_diagnostics" end, { desc = "Diagnostics" })
 
 -- Comment
 vim.keymap.set("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end)
 vim.keymap.set("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>")
 
 -- todo-comments
-vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end) -- move between TODOs
-vim.keymap.set("n", "[t", function() require("todo-comments").jump_next() end) -- ^
+vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo" })
+vim.keymap.set("n", "[t", function() require("todo-comments").jump_next() end, { desc = "Previous todo" })
 
 -- gitsigns
 vim.keymap.set("n", "]c",
@@ -122,7 +133,8 @@ vim.keymap.set("n", "]c",
         if vim.wo.diff then return "]c" end
         vim.schedule(function() require("gitsigns").next_hunk() end)
         return "<Ignore>"
-    end
+    end,
+    { desc = "Next git hunk" }
 )
 
 vim.keymap.set("n", "[c",
@@ -131,11 +143,12 @@ vim.keymap.set("n", "[c",
         vim.schedule(function() require("gitsigns").prev_hunk() end)
         return "<Ignore>"
     end
+    , { desc = "Previous git hunk" }
 )
 
-vim.keymap.set("n", "rh", function() require("gitsigns").reset_hunk() end)
-vim.keymap.set("n", "td", function() require("gitsigns").toggle_deleted() end)
-vim.keymap.set("n", "gb", function() package.loaded.gitsigns.blame_line() end)
+vim.keymap.set("n", "rh", function() require("gitsigns").reset_hunk() end, { desc = "Reset hunk" })
+vim.keymap.set("n", "td", function() require("gitsigns").toggle_deleted() end, { desc = "Toggle deleted" })
+vim.keymap.set("n", "gb", function() package.loaded.gitsigns.blame_line() end, { desc = "Blame line" })
 -- vim.keymap.set("n", "ph", function() require("gitsigns").preview_hunk() end)
 
 return M

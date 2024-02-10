@@ -20,6 +20,7 @@ return {
                 { filter = { event = "msg_show", kind = "", find = "%d+ fewer lines", }, opts = { skip = true } },
             },
             lsp = {
+                -- TODO: See if what I currently have is enough or if I need to find a way to use these
                 hover = {
                     enabled = false,
                 },
