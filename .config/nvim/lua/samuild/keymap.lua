@@ -40,20 +40,19 @@ vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Unindent selection" })
 
 -- LSP keymap - imported by lspconfig, sets keymap only if an LSP is loaded in a given buffer, otherwise remains unset
 M.add_lsp_keymap_to_buffer = function(bufnr)
-    local opts = { buffer = bufnr, remap = false }
-    local trouble = require("trouble")
+    local function opts(desc) return { buffer = bufnr, remap = false, desc = desc } end
 
-    vim.keymap.set({ "n", "v" }, "<leader>fm", vim.lsp.buf.format, opts)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "gr", function() trouble.toggle "lsp_references" end, opts)
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts)
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts)
+    vim.keymap.set({ "n", "v" }, "<leader>fm", vim.lsp.buf.format, opts("[LSP] Format"))
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("[LSP] Go to definition"))
+    vim.keymap.set("n", "gr", function() require("trouble").toggle "lsp_references" end, opts("[LSP] References"))
+    vim.keymap.set("n", "[d", vim.diagnostic.goto_next, opts("[LSP] Next diagnostic"))
+    vim.keymap.set("n", "]d", vim.diagnostic.goto_prev, opts("[LSP] Previous diagnostic"))
 
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set({ "n", "i" }, "<C-g>", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts("[LSP] Hover"))
+    vim.keymap.set({ "n", "i" }, "<C-g>", vim.lsp.buf.signature_help, opts("[LSP] Signature help"))
 
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-    vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts("[LSP] Code action"))
+    vim.keymap.set("n", "<leader>ra", vim.lsp.buf.rename, opts("[LSP] Rename"))
 end
 
 -- LSP keymap for suggestions drop-down - imported by cmp config
@@ -142,8 +141,8 @@ vim.keymap.set("n", "[c",
         if vim.wo.diff then return "[c" end
         vim.schedule(function() require("gitsigns").prev_hunk() end)
         return "<Ignore>"
-    end
-    , { desc = "Previous git hunk" }
+    end,
+    { desc = "Previous git hunk" }
 )
 
 vim.keymap.set("n", "rh", function() require("gitsigns").reset_hunk() end, { desc = "Reset hunk" })
