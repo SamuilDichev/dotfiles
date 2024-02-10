@@ -4,9 +4,11 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv "HOME" .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Incremental search
+-- Search
 vim.opt.incsearch = true
 vim.opt.hlsearch = true
+vim.opt.ignorecase = true -- ignore case when searching
+vim.opt.smartcase = true -- do NOT ignore case if pattern has uppercase characters
 
 -- Visual stuff
 vim.wo.number = true
@@ -16,7 +18,9 @@ vim.opt.scrolloff = 8 -- scrolling doesn't hide all lines
 vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
+vim.opt.cursorline = true
 vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Sessions
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
