@@ -20,14 +20,14 @@ return {
                 { filter = { event = "msg_show", kind = "", find = "%d+ fewer lines", }, opts = { skip = true } },
                 { filter = { event = "msg_show", kind = "", find = "%d+ lines yanked", }, opts = { skip = true } },
             },
-            -- lsp = {
-            --     hover = {
-            --         enabled = false,
-            --     },
-            --     signature = {
-            --         enabled = false,
-            --     },
-            -- },
+            lsp = {
+                hover = {
+                    enabled = false,
+                },
+                signature = {
+                    enabled = false,
+                },
+            },
         }
     end,
 }
