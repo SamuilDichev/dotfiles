@@ -16,10 +16,21 @@ return {
         require("mason-lspconfig").setup({ ensure_installed = { "lua_ls", "tsserver", "pyright", "rust_analyzer" } })
 
         -- Servers with default setup
-        local default_setup_servers = { "lua_ls", "tsserver", "rust_analyzer"}
+        local default_setup_servers = { "tsserver", "rust_analyzer" }
         for _, server in ipairs(default_setup_servers) do
             lspconfig[server].setup({ capabilities = capabilities })
         end
+
+        lspconfig.lua_ls.setup({
+            settings = {
+                Lua = {
+                    telemetry = { enable = false },
+                    diagnostics = {
+                        globals = { "vim" },
+                    },
+                },
+            },
+        })
 
         -- Servers with special setup
         lspconfig.pyright.setup({
