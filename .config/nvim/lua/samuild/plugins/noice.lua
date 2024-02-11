@@ -20,15 +20,14 @@ return {
                 { filter = { event = "msg_show", kind = "", find = "%d+ fewer lines", }, opts = { skip = true } },
                 { filter = { event = "msg_show", kind = "", find = "%d+ lines yanked", }, opts = { skip = true } },
             },
-            lsp = {
-                -- TODO: See if what I currently have is enough or if I need to find a way to use these
-                hover = {
-                    enabled = false,
-                },
-                signature = {
-                    enabled = false,
-                },
-            },
+            -- lsp = {
+            --     hover = {
+            --         enabled = false,
+            --     },
+            --     signature = {
+            --         enabled = false,
+            --     },
+            -- },
         }
     end,
 }
