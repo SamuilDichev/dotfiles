@@ -2,9 +2,8 @@ return {
     "zbirenbaum/copilot.lua",
     cmd = "Copilot",
     event = "InsertEnter",
-    -- opts = {
-    --     suggestion = { enabled = false },
-    --     panel = { enabled = false },
-    -- },
-    config = true,
+    opts = {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+    },
 }

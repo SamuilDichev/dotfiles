@@ -6,16 +6,18 @@ return {
         { "hrsh7th/cmp-buffer" },     -- source
         { "hrsh7th/cmp-path" },       -- source
         { "hrsh7th/cmp-cmdline" },    -- source
-        -- { "zbirenbaum/copilot-cmp" }, -- source
+        { "zbirenbaum/copilot-cmp" }, -- source
         { "onsails/lspkind.nvim" },   -- icons in completion dropdown
     },
     config = function()
         local cmp = require('cmp')
         local lspkind = require("lspkind")
         local mapping = require("samuild.keymap").add_lsp_suggestion_keymap(cmp)
+        require("copilot_cmp").setup({})
 
         -- Completion global settings
         cmp.setup({
+            preselect = cmp.PreselectMode.None,
             formatting = {
                 format = lspkind.cmp_format({
                     symbol_map = {
@@ -31,8 +33,8 @@ return {
                 { name = 'nvim_lsp' },
                 { name = 'copilot' },
                 -- { name = "treesitter" },
-                { name = "buffer", max_item_count = 5 },
-                { name = 'path', max_item_count = 5},
+                { name = "buffer" },
+                { name = 'path' },
             },
             mapping = cmp.mapping.preset.insert(mapping)
         })
