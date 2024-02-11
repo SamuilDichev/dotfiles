@@ -2,6 +2,7 @@ return {
     "hrsh7th/nvim-cmp",
     lazy = false,
     dependencies = {
+        { "L3MON4D3/LuaSnip" },       -- source
         { "hrsh7th/cmp-nvim-lsp" },   -- source
         { "hrsh7th/cmp-buffer" },     -- source
         { "hrsh7th/cmp-path" },       -- source
@@ -17,6 +18,11 @@ return {
 
         -- Completion global settings
         cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
             preselect = cmp.PreselectMode.None,
             formatting = {
                 format = lspkind.cmp_format({
@@ -31,6 +37,7 @@ return {
             },
             sources = {
                 { name = 'nvim_lsp' },
+                { name = 'nvim_lua' },
                 { name = 'copilot' },
                 -- { name = "treesitter" },
                 { name = "buffer" },
