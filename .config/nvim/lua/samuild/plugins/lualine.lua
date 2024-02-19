@@ -51,7 +51,7 @@ return {
                     {
                         "lsp",
                         fmt = show_active_lsp,
-                        icon = { "'", color = { fg = "limegreen" } },
+                        icon = { "", color = { fg = "limegreen" } },
                     },
                     "filetype",
                 },
