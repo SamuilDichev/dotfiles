@@ -12,7 +12,7 @@ return {
         local function show_active_lsp()
             local msg = "NO LSP"
             local buf_ft = vim.api.nvim_get_option_value("filetype", {})
-            local clients = vim.lsp.get_clients()
+            local clients = vim.lsp.buf_get_clients()  -- TODO: In later versions this becomes lsp.get_clients()
             if next(clients) == nil then
                 return msg
             end
