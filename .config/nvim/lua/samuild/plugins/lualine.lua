@@ -10,11 +10,10 @@ return {
         end
 
         local function show_active_lsp()
-            local msg = "NO LSP"
             local buf_ft = vim.api.nvim_get_option_value("filetype", {})
             local clients = vim.lsp.buf_get_clients()  -- TODO: In later versions this becomes lsp.get_clients()
             if next(clients) == nil then
-                return msg
+                return ""
             end
 
             local client_names = {}
@@ -51,7 +50,7 @@ return {
                     {
                         "lsp",
                         fmt = show_active_lsp,
-                        icon = { "", color = { fg = "limegreen" } },
+                        icon = { "", color = { fg = "limegreen" } },
                     },
                     "filetype",
                 },
