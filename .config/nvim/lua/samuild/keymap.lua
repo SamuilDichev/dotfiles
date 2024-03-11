@@ -69,6 +69,7 @@ M.add_lsp_suggestion_keymap = function(cmp)
 end
 
 -- Marks/bookmarks mappings
+vim.keymap.set("n", "dm*", "<cmd> delm! | delm A-Z0-9 <CR>", { desc = "Delete all marks everywhere" })
 M.marks_mappings = {
     set = "m",            -- Waits for 1 char input, sets a mark with that name
     delete = "dm",        -- Waits for 1 char input, deletes a mark with that name
