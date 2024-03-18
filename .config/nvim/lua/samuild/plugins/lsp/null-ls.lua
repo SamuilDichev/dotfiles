@@ -7,6 +7,7 @@ return {
         local null_ls = require("null-ls")
         local b = null_ls.builtins
         local sources = {
+            b.formatting.isort,
             b.formatting.black.with({ extra_args = { "--line-length", "120" } }),
         }
 

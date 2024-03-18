@@ -13,9 +13,11 @@ return {
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
         require("mason").setup({})
-        require("mason-lspconfig").setup({ ensure_installed = {
-            "lua_ls", "tsserver", "pyright", "rust_analyzer", "gopls",
-        }})
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "lua_ls", "tsserver", "pyright", "rust_analyzer", "gopls",
+            }
+        })
 
         -- Servers with default setup
         local default_setup_servers = { "tsserver", "rust_analyzer", "gopls" }
