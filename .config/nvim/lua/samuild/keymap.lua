@@ -40,8 +40,9 @@ vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Unindent selection" })
 -- LSP keymap - imported by lspconfig, sets keymap only if an LSP is loaded in a given buffer, otherwise remains unset
 M.add_lsp_keymap_to_buffer = function(bufnr)
     local function opts(desc) return { buffer = bufnr, remap = false, desc = desc } end
+    local function lsp_format() vim.lsp.buf.format({ timeout_ms = 5000 }) end
 
-    vim.keymap.set({ "n", "v" }, "<leader>fm", vim.lsp.buf.format, opts("[LSP] Format"))
+    vim.keymap.set({ "n", "v" }, "<leader>fm", lsp_format, opts("[LSP] Format"))
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts("[LSP] Go to definition"))
     vim.keymap.set("n", "gr", function() require("trouble").toggle "lsp_references" end, opts("[LSP] References"))
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts("[LSP] Next diagnostic"))
