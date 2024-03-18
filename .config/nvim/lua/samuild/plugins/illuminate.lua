@@ -42,11 +42,18 @@ return {
             under_cursor = false,
             -- large_file_cutoff: number of lines at which to use large_file_config
             -- The `under_cursor` option is disabled when this cutoff is hit
-            large_file_cutoff = nil,
-            -- large_file_config: config to use for large files (based on large_file_cutoff).
+            large_file_cutoff = 1000,
+            -- large_file_overrides: config to use for large files (based on large_file_cutoff).
             -- Supports the same keys passed to .configure
             -- If nil, vim-illuminate will be disabled for large files.
-            large_file_overrides = nil,
+            large_file_overrides = {
+                -- treesitter gets slow after 1000 lines, so prioritize regex for large files over treesitter
+                providers = {
+                    "lsp",
+                    "regex",
+                    "treesitter",
+                },
+            },
             -- min_count_to_highlight: minimum number of matches required to perform highlighting
             min_count_to_highlight = 1,
             -- should_enable: a callback that overrides all other settings to
