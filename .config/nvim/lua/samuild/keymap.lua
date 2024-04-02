@@ -83,7 +83,7 @@ M.marks_mappings = {
 
 -- Nvim Tree (file browser)
 vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
-vim.keymap.set("n", "<F1>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
+vim.keymap.set({ "i", "n" }, "<F1>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
 
 -- Tabs
 vim.keymap.set("n", "<Tab>", "<cmd> BufferNext<CR>", { desc = "Next tab" })

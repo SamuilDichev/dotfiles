@@ -15,7 +15,11 @@ return {
         require("mason").setup({})
         require("mason-lspconfig").setup({
             ensure_installed = {
-                "lua_ls", "tsserver", "pyright", "rust_analyzer", "gopls",
+                "lua_ls",
+                "tsserver",
+                "pyright",
+                "rust_analyzer",
+                "gopls@v0.11.0",  -- For Golang version 1.16.15
             }
         })
 
