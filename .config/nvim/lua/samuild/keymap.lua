@@ -81,6 +81,12 @@ M.marks_mappings = {
     delete_buf = "dm<tab>", -- Deletes all marks in current buffer
 }
 
+-- Folds
+M.set_folding_keymap = function(ufo)
+    vim.keymap.set("n", "zR", ufo.openAllFolds)
+    vim.keymap.set("n", "zM", ufo.closeAllFolds)
+end
+
 -- Nvim Tree (file browser)
 vim.keymap.set("n", "<C-n>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
 vim.keymap.set({ "i", "n" }, "<F1>", "<cmd> NvimTreeToggle <CR>", { desc = "Toggle file browser" })
