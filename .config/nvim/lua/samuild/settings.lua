@@ -34,7 +34,7 @@ vim.opt.updatetime = 50
 vim.g.pyindent_open_paren = "shiftwidth()"
 
 -- Fold
-vim.o.foldcolumn = "1"
+-- vim.o.foldcolumn = "1"  -- show folds in side column
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
