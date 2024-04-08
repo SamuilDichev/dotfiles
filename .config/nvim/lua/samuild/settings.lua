@@ -19,11 +19,11 @@ vim.opt.colorcolumn = "120"
 vim.opt.termguicolors = true
 vim.opt.signcolumn = "yes"
 vim.opt.cursorline = true
-vim.o.splitbelow = true
-vim.o.splitright = true
+vim.opt.splitbelow = true
+vim.opt.splitright = true
 
 -- Sessions
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
+vim.opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 
 -- Performance
 vim.opt.updatetime = 50
@@ -32,3 +32,9 @@ vim.opt.updatetime = 50
 -- vim.opt.list = true
 -- vim.opt.listchars:append("space:·")
 vim.g.pyindent_open_paren = "shiftwidth()"
+
+-- Fold
+vim.o.foldcolumn = "1"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

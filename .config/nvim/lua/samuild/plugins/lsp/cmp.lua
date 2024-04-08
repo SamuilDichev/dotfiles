@@ -57,7 +57,7 @@ return {
                 },
             },
             sources = {
-                { name = 'copilot',  priority = 8 },
+                -- { name = 'copilot',  priority = 8 },
                 { name = 'nvim_lsp', priority = 8 },
                 { name = 'luasnip',  priority = 7 },
                 { name = "buffer",   priority = 7 },
