@@ -104,6 +104,7 @@ vim.keymap.set("n", "<leader>X", "<cmd> BufferRestore<CR>", { desc = "Restore cl
 vim.keymap.set("n", "<leader>ff", "<cmd> Telescope find_files <CR>", { desc = "[Telescope] Find files" })
 vim.keymap.set("n", "<leader>fa", "<cmd> Telescope live_grep <CR>", { desc = "[Telescope] Grep ALL files" })
 vim.keymap.set("n", "<leader>fc", "<cmd> Telescope neoclip <CR>", { desc = "[Telescope] Clipboard" })
+vim.keymap.set("n", "<leader>fq", "<cmd> Telescope macroscope <CR>", { desc = "[Telescope] Macros" })
 vim.keymap.set("n", "gs", "<cmd> Telescope git_status <CR>", { desc = "[Telescope] Git diff" })
 vim.keymap.set("n", "gc", "<cmd> Telescope git_commits <CR>", { desc = "[Telescope] Git commits" })
 vim.keymap.set("n", "<F2>", "<cmd> Telescope marks <CR>", { desc = "[Telescope] Marks" })
