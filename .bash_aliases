@@ -35,7 +35,7 @@ alias ta5="tmux attach -t 5"
 
 # ops
 alias fuck='if ! declare -f fuck &>/dev/null; then eval -- "$(thefuck -a)"; fi && fuck'
-eval "$(zoxide init bash)"
+alias z='if ! declare -f z &>/dev/null; then eval -- "$(zoxide init bash)"; fi && z'
 alias cd="z"
 alias cat="batcat"
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
