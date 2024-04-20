@@ -20,8 +20,8 @@ alias devutil=". ~/repos/devutil/venv/bin/activate"
 alias dva="deactivate"
 alias prune="git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
 
-alias gate="ssh -A samuild@ssh-hex.mustardsystems.com -p 2221 -D 8080 -L10002:maltose:22"
-alias office="ssh -Ap 10002 samuild@localhost -D 8081"
+alias gate="ssh -A samuild@ssh-hex.mustardsystems.com -p 2221 -D 8080 -L10002:maltose:22 -L10008:maltose:80"
+alias office="ssh -qAp 10002 samuild@localhost -D 8081"
 
 # tmux
 alias tls="tmux list-sessions"
@@ -34,6 +34,7 @@ alias ta4="tmux attach -t 4"
 alias ta5="tmux attach -t 5"
 
 # ops
+eval $(thefuck --alias)
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
 alias fhere="find . -name "
 alias df="df -Th --total"
