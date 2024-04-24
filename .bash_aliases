@@ -1,15 +1,3 @@
-### Custom .bashrc ###
-export HISTTIMEFORMAT="%h %d %H:%M:%S "
-export HISTSIZE=100000
-export HISTFILESIZE=100000
-shopt -s histappend
-export PROMPT_COMMAND='history -a'
-export HISTIGNORE="ls:history"
-
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-### Aliases ####
 # dev
 alias vim="nvim"
 alias gcd='cd `git rev-parse --show-toplevel`'
