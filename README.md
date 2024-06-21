@@ -41,6 +41,9 @@ The remaining files/folders should be the actual dot files, i.e. files actually 
 ### Aliases
 `ln -s <this-repo-path>/.bash_aliases ~/`
 
+### Ruff config
+`ln -s <this-repo-path>/.config/ruff ~/.config/`
+
 ### Neovim
 - Install version >= 0.9.0
 - Setup config - `ln -s <this-repo-path>/.config/nvim ~/.config/`

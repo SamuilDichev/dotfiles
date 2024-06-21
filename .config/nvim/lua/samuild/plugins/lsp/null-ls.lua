@@ -16,8 +16,8 @@ return {
         local sources = {
             -- isort,
             -- black.with({ extra_args = { "--line-length", "120" } }),
-            ruff_lint.with({ extra_args = { "--select", "I" } }),
-            ruff_format.with({ extra_args = { "--line-length", "120" } }),
+            ruff_lint,
+            ruff_format,
         }
 
         null_ls.setup({ sources = sources })
