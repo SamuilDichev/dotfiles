@@ -121,7 +121,7 @@ vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz", { desc = "Next in loc list" })
 vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz", { desc = "Previous in loc list" })
 
 -- Trouble (diagnostics)
-vim.keymap.set("n", "<F3>", function() require("trouble").toggle "document_diagnostics" end, { desc = "Diagnostics" })
+vim.keymap.set("n", "<F3>", function() require("trouble").toggle "diagnostics" end, { desc = "Diagnostics" })
 
 -- Comment
 vim.keymap.set("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end)

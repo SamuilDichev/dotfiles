@@ -11,7 +11,8 @@ return {
 
         local function show_active_lsp()
             local buf_ft = vim.api.nvim_get_option_value("filetype", {})
-            local clients = vim.lsp.buf_get_clients()  -- TODO: In later versions this becomes lsp.get_clients()
+            -- TODO: In earlier versions this was 'vim.lsp.buf_get_clients()', later becomes lsp.get_clients()
+            local clients = vim.lsp.get_clients()
             if next(clients) == nil then
                 return ""
             end
