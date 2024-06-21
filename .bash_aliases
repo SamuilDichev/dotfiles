@@ -1,15 +1,3 @@
-### Custom .bashrc ###
-export HISTTIMEFORMAT="%h %d %H:%M:%S "
-export HISTSIZE=100000
-export HISTFILESIZE=100000
-shopt -s histappend
-export PROMPT_COMMAND='history -a'
-export HISTIGNORE="ls:history"
-
-export EDITOR='nvim'
-export VISUAL='nvim'
-
-### Aliases ####
 # dev
 alias vim="nvim"
 alias gcd='cd `git rev-parse --show-toplevel`'
@@ -34,10 +22,14 @@ alias ta4="tmux attach -t 4"
 alias ta5="tmux attach -t 5"
 
 # ops
-alias fuck='if ! declare -f fuck &>/dev/null; then eval -- "$(thefuck -a)"; fi && fuck'
-eval "$(zoxide init bash)"
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias ll='ls -alF'
+alias z='if ! declare -f z &>/dev/null; then eval -- "$(zoxide init bash)"; fi && z'
 alias cd="z"
 alias cat="batcat"
+
+alias fuck='if ! declare -f fuck &>/dev/null; then eval -- "$(thefuck -a)"; fi && fuck'
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
 alias fhere="find . -name "
 alias df="df -Th --total"
