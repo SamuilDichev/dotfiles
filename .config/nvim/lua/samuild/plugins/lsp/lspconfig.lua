@@ -19,7 +19,7 @@ return {
                 "tsserver",
                 "pyright",
                 "rust_analyzer",
-                "gopls@v0.11.0",  -- For Golang version 1.16.15
+                "gopls@v0.11.0", -- For Golang version 1.16.15
             }
         })
 
@@ -54,6 +54,15 @@ return {
                         autoFormatStrings = true, -- Place f in front of strings when you type { inside one
                     }
                 }
+            },
+        })
+
+        -- For inline diagnostics - show only first line of the message
+        vim.diagnostic.config({
+            virtual_text = {
+                format = function(diagnostic)
+                    return diagnostic.message:match("^[^\n]*")
+                end,
             },
         })
 
