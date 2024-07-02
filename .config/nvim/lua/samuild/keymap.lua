@@ -107,9 +107,10 @@ vim.keymap.set("n", "<leader>fc", "<cmd> Telescope neoclip <CR>", { desc = "[Tel
 vim.keymap.set("n", "<leader>fq", "<cmd> Telescope macroscope <CR>", { desc = "[Telescope] Macros" })
 vim.keymap.set("n", "gs", "<cmd> Telescope git_status <CR>", { desc = "[Telescope] Git diff" })
 vim.keymap.set("n", "gc", "<cmd> Telescope git_commits <CR>", { desc = "[Telescope] Git commits" })
-vim.keymap.set("n", "<F2>", "<cmd> Telescope marks <CR>", { desc = "[Telescope] Marks" })
-vim.keymap.set("n", "<F4>", "<cmd> Telescope notify <CR>", { desc = "[Telescope] Notifications" })
-vim.keymap.set("n", "<F5>", "<cmd> Telescope help_tags <CR>", { desc = "[Telescope] Help tags" })
+vim.keymap.set("n", "<F2>", "<cmd> Telescope resume <CR>", { desc = "[Telescope] Resume last search" })
+vim.keymap.set("n", "<F4>", "<cmd> Telescope marks <CR>", { desc = "[Telescope] Marks" })
+vim.keymap.set("n", "<F5>", "<cmd> Telescope notify <CR>", { desc = "[Telescope] Notifications" })
+vim.keymap.set("n", "<F6>", "<cmd> Telescope help_tags <CR>", { desc = "[Telescope] Help tags" })
 
 -- Undo Tree
 vim.keymap.set("n", "<leader>u", "<cmd> UndotreeToggle <CR>", { desc = "Toggle undo tree" })
