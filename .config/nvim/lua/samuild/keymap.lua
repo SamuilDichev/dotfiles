@@ -108,7 +108,7 @@ vim.keymap.set("n", "<leader>fq", "<cmd> Telescope macroscope <CR>", { desc = "[
 vim.keymap.set("n", "gs", "<cmd> Telescope git_status <CR>", { desc = "[Telescope] Git diff" })
 vim.keymap.set("n", "gc", "<cmd> Telescope git_commits <CR>", { desc = "[Telescope] Git commits" })
 vim.keymap.set("n", "<F2>", "<cmd> Telescope resume <CR>", { desc = "[Telescope] Resume last search" })
-vim.keymap.set("n", "<F4>", "<cmd> Telescope marks <CR>", { desc = "[Telescope] Marks" })
+vim.keymap.set("n", "<F3>", "<cmd> Telescope marks <CR>", { desc = "[Telescope] Marks" })
 vim.keymap.set("n", "<F5>", "<cmd> Telescope notify <CR>", { desc = "[Telescope] Notifications" })
 vim.keymap.set("n", "<F6>", "<cmd> Telescope help_tags <CR>", { desc = "[Telescope] Help tags" })
 
@@ -122,7 +122,7 @@ vim.keymap.set("n", "]l", "<cmd>lnext<CR>zz", { desc = "Next in loc list" })
 vim.keymap.set("n", "[l", "<cmd>lprev<CR>zz", { desc = "Previous in loc list" })
 
 -- Trouble (diagnostics)
-vim.keymap.set("n", "<F3>", function() require("trouble").toggle "diagnostics" end, { desc = "Diagnostics" })
+vim.keymap.set("n", "<F4>", function() require("trouble").toggle "diagnostics" end, { desc = "Diagnostics" })
 
 -- Comment
 vim.keymap.set("n", "<leader>/", function() require("Comment.api").toggle.linewise.current() end)
