@@ -18,6 +18,8 @@ return {
                 "lua_ls",
                 "tsserver",
                 "pyright",
+                "ruff",
+                "ruff_lsp",
                 "rust_analyzer",
                 "gopls@v0.11.0", -- For Golang version 1.16.15
             }
@@ -52,10 +54,26 @@ return {
                         diagnosticMode = "openFilesOnly",
                         autoImportCompletions = true,
                         autoFormatStrings = true, -- Place f in front of strings when you type { inside one
+                        -- ignore = { '*' }, -- disable analysis
                     }
                 }
             },
         })
+
+        lspconfig.ruff_lsp.setup {
+            on_attach = function(client, bufnr)
+                if client.name == 'ruff_lsp' then
+                    -- Disable hover in favor of Pyright
+                    client.server_capabilities.hoverProvider = false
+                end
+            end ,
+            init_options = {
+                settings = {
+                    -- Any extra CLI arguments for `ruff` go here.
+                    args = {},
+                }
+            }
+        }
 
         -- For inline diagnostics - show only first line of the message
         vim.diagnostic.config({
