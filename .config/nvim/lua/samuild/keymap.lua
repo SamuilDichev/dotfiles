@@ -36,6 +36,7 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 vim.keymap.set("v", "<Tab>", ">gv", { desc = "Indent selection" })
 vim.keymap.set("v", "<S-Tab>", "<gv", { desc = "Unindent selection" })
+-- Shift + v then g + q to break a line up based on textwidth setting
 
 -- LSP keymap - imported by lspconfig, sets keymap only if an LSP is loaded in a given buffer, otherwise remains unset
 M.add_lsp_keymap_to_buffer = function(bufnr)
@@ -130,7 +131,7 @@ vim.keymap.set("v", "<leader>/", "<ESC><cmd>lua require('Comment.api').toggle.li
 
 -- todo-comments
 vim.keymap.set("n", "]t", function() require("todo-comments").jump_next() end, { desc = "Next todo" })
-vim.keymap.set("n", "[t", function() require("todo-comments").jump_next() end, { desc = "Previous todo" })
+vim.keymap.set("n", "[t", function() require("todo-comments").jump_prev() end, { desc = "Previous todo" })
 
 -- gitsigns
 vim.keymap.set("n", "]c",
