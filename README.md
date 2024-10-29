@@ -33,8 +33,6 @@ The remaining files/folders should be the actual dot files, i.e. files actually 
 - [NodeJS](https://github.com/nodesource/distributions#installation-instructions)
 - [snapd](https://snapcraft.io/docs/installing-snap-on-ubuntu) (_Optional_) - Can be used to install NeoVim via `snap install nvim --stable --classic`
 - [bat](https://github.com/sharkdp/bat?tab=readme-ov-file#installation) - Modern cat
-- [thefuck](https://github.com/nvbn/thefuck?tab=readme-ov-file#installation) (_Optional_) - auto-correct for commands
-- [zoxide](https://github.com/ajeetdsouza/zoxide?tab=readme-ov-file#installation) - better cd
 
 ## Installation
 

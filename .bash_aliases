@@ -8,8 +8,7 @@ alias devutil=". ~/repos/devutil/venv/bin/activate"
 alias dva="deactivate"
 alias prune="git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
 
-alias gate="ssh -A samuild@ssh-hex.mustardsystems.com -p 2221 -D 8080 -L10002:maltose:22 -L10008:maltose:80"
-alias office="ssh -qAp 10002 samuild@localhost -D 8081"
+alias db="psql -h DUE2olyDB20L -U postgres"
 
 # tmux
 alias tls="tmux list-sessions"
@@ -25,11 +24,8 @@ alias ta5="tmux attach -t 5"
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='ls -alF'
-alias z='if ! declare -f z &>/dev/null; then eval -- "$(zoxide init bash)"; fi && z'
-alias cd="z"
-alias cat="batcat"
+# alias bat="batcat"
 
-alias fuck='if ! declare -f fuck &>/dev/null; then eval -- "$(thefuck -a)"; fi && fuck'
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
 alias fhere="find . -name "
 alias df="df -Th --total"
@@ -47,13 +43,13 @@ function cl {
 }
 
 function va {
-    if [ -d "venv" ]; then
-        . venv/bin/activate && echo "venv";
-    elif [ -d "env" ]; then
-        . env/bin/activate && echo "env";
-    else
-        devutil && echo "devutil";
-    fi
+    for dir in venv env .venv .env; do
+        if [ -d "$dir" ]; then
+            . "$dir/bin/activate" && echo "$dir"
+            return
+        fi
+    done
+    . $(poetry env info --path)/bin/activate
 }
 
 function extract {
