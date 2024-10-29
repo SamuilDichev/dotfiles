@@ -12,13 +12,6 @@ alias db="psql -h DUE2olyDB20L -U postgres"
 
 # tmux
 alias tls="tmux list-sessions"
-alias ta="tmux attach"
-alias ta0="tmux attach -t 0"
-alias ta1="tmux attach -t 1"
-alias ta2="tmux attach -t 2"
-alias ta3="tmux attach -t 3"
-alias ta4="tmux attach -t 4"
-alias ta5="tmux attach -t 5"
 
 # ops
 alias ls='ls --color=auto'
@@ -40,6 +33,14 @@ alias reload=". ~/.bashrc"
 function cl {
     cd "$@";
     ll;
+}
+
+function ta {
+    if tmux ls &>/dev/null; then
+        tmux attach
+    else
+        ~/repos/dotfiles/tmux-setup.sh && tmux attach
+    fi
 }
 
 function va {

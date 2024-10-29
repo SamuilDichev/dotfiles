@@ -15,8 +15,8 @@ create_session() {
     if ! session_exists "$session_name"; then
         tmux new-session -d -s "$session_name" -c "$session_path"
         tmux split-window -h -c "$session_path"
-	tmux split-window -v -c "$session_path"
-	tmux select-pane -t 1
+        tmux split-window -v -c "$session_path"
+        tmux select-pane -t 1
     fi
 }
 
@@ -25,4 +25,4 @@ create_session "dotfiles" "$repos_path/dotfiles"
 create_session "General" "~"
 
 # Work
-create_session "Beefy" "$repos_path/beefy"
+create_session "Trade Ticket" "$repos_path/trade-ticket-service"
