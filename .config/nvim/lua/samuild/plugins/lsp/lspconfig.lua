@@ -16,20 +16,32 @@ return {
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
-                "tsserver",
+                "ts_ls",
                 "pyright",
                 "ruff",
                 "ruff_lsp",
-                "rust_analyzer",
-                "gopls@v0.11.0", -- For Golang version 1.16.15
+                -- "rust_analyzer",
+                -- "gopls@v0.11.0", -- For Golang version 1.16.15
             }
         })
 
+        -- Auto-install formatters
+        local formatters = { "prettierd", }
+        local mason_registry = require("mason-registry")
+        for _, formatter in ipairs(formatters) do
+            local package = mason_registry.get_package(formatter)
+            if not package:is_installed() then
+                package:install()
+            end
+        end
+
         -- Servers with default setup
-        local default_setup_servers = { "tsserver", "rust_analyzer", "gopls" }
+        -- local default_setup_servers = { "ts_ls", "rust_analyzer", "gopls" }
+        local default_setup_servers = { "ts_ls" }
         for _, server in ipairs(default_setup_servers) do
             lspconfig[server].setup({ capabilities = capabilities })
         end
+
 
         lspconfig.lua_ls.setup({
             settings = {
@@ -66,7 +78,7 @@ return {
                     -- Disable hover in favor of Pyright
                     client.server_capabilities.hoverProvider = false
                 end
-            end ,
+            end,
             init_options = {
                 settings = {
                     -- Any extra CLI arguments for `ruff` go here.

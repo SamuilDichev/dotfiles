@@ -12,12 +12,14 @@ return {
         -- local black = null_ls.builtins.formatting.black
         local ruff_lint = require("none-ls.formatting.ruff")
         local ruff_format = require("none-ls.formatting.ruff_format")
+        local prettierd_format = require("null-ls.builtins.formatting.prettierd")
 
         local sources = {
             -- isort,
             -- black.with({ extra_args = { "--line-length", "120" } }),
             ruff_lint,
             ruff_format,
+            prettierd_format,
         }
 
         null_ls.setup({ sources = sources })
