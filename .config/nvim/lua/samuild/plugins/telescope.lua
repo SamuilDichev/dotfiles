@@ -7,7 +7,13 @@ return {
         { "nvim-tree/nvim-web-devicons" },
     },
     config = function()
-        require("telescope").setup()
+        require("telescope").setup {
+            pickers = {
+                find_files = {
+                    hidden = true
+                }
+            }
+        }
         require("telescope").load_extension("notify")
         require("telescope").load_extension("neoclip")
         require("telescope").load_extension("macroscope")
