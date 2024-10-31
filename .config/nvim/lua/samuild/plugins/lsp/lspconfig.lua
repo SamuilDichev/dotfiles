@@ -37,7 +37,7 @@ return {
 
         -- Servers with default setup
         -- local default_setup_servers = { "ts_ls", "rust_analyzer", "gopls" }
-        local default_setup_servers = { "ts_ls" }
+        local default_setup_servers = { "ts_ls", "ruff" }
         for _, server in ipairs(default_setup_servers) do
             lspconfig[server].setup({ capabilities = capabilities })
         end

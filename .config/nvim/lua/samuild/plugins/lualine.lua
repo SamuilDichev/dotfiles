@@ -24,7 +24,7 @@ return {
                     table.insert(client_names, client.name)
                 end
             end
-            return table.concat(client_names, " & ")
+            return table.concat(client_names, " | ")
         end
 
         require("lualine").setup {
