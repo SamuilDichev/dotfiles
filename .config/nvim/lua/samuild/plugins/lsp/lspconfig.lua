@@ -38,7 +38,7 @@ return {
 
         -- Servers with default setup
         -- local default_setup_servers = { "ruff", "volar", "rust_analyzer", "gopls" }
-        local default_setup_servers = { "ruff", "volar" }
+        local default_setup_servers = { "ruff", }
         for _, server in ipairs(default_setup_servers) do
             lspconfig[server].setup({ capabilities = capabilities })
         end
@@ -87,6 +87,14 @@ return {
             }
         }
 
+        lspconfig.volar.setup {
+            init_options = {
+                vue = {
+                    hybridMode = false,
+                },
+            },
+        }
+
         lspconfig.ts_ls.setup {
             capabilities = capabilities,
             init_options = {
@@ -102,7 +110,6 @@ return {
                     },
                 },
             },
-            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         }
 
         -- For inline diagnostics - show only first line of the message
