@@ -14,6 +14,7 @@ return {
                 "javascript",
                 "typescript",
                 "tsx",
+                "vue",
                 "html",
                 "css",
                 "python",
@@ -27,7 +28,7 @@ return {
             sync_install = false,
             highlight = { enable = true },
             indent = {
-                enable = true,
+                enable = false,
                 disable = {
                     "python",
                 },

@@ -20,6 +20,7 @@ return {
                 "pyright",
                 "ruff",
                 "ruff_lsp",
+                "volar",
                 -- "rust_analyzer",
                 -- "gopls@v0.11.0", -- For Golang version 1.16.15
             }
@@ -36,12 +37,11 @@ return {
         end
 
         -- Servers with default setup
-        -- local default_setup_servers = { "ts_ls", "rust_analyzer", "gopls" }
-        local default_setup_servers = { "ts_ls", "ruff" }
+        -- local default_setup_servers = { "ruff", "volar", "rust_analyzer", "gopls" }
+        local default_setup_servers = { "ruff", "volar" }
         for _, server in ipairs(default_setup_servers) do
             lspconfig[server].setup({ capabilities = capabilities })
         end
-
 
         lspconfig.lua_ls.setup({
             settings = {
@@ -85,6 +85,24 @@ return {
                     args = {},
                 }
             }
+        }
+
+        lspconfig.ts_ls.setup {
+            capabilities = capabilities,
+            init_options = {
+                -- Requires:
+                -- npm install -g @vue/language-server
+                -- npm install -g @vue/typescript-plugin
+                plugins = {
+                    {
+                        name = "@vue/typescript-plugin",
+                        -- location = "/usr/local/lib/node_modules/@vue/language-server",
+                        location = "",
+                        languages = { "vue" },
+                    },
+                },
+            },
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
         }
 
         -- For inline diagnostics - show only first line of the message
