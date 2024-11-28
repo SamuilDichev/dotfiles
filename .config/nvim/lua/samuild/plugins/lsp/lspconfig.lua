@@ -37,7 +37,7 @@ return {
         end
 
         -- Servers with default setup
-        -- local default_setup_servers = { "ruff", "volar", "rust_analyzer", "gopls" }
+        -- local default_setup_servers = { "ruff", "rust_analyzer", "gopls" }
         local default_setup_servers = { "ruff", }
         for _, server in ipairs(default_setup_servers) do
             lspconfig[server].setup({ capabilities = capabilities })
@@ -93,6 +93,10 @@ return {
                     hybridMode = false,
                 },
             },
+            on_attach = function(client)
+                -- Disable formatting, leave it to prettier
+                client.server_capabilities.documentFormattingProvider= false
+            end,
         }
 
         lspconfig.ts_ls.setup {

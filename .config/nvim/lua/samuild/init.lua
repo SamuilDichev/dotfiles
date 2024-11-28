@@ -21,3 +21,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
         vim.highlight.on_yank { timeout = 200, visual = true }
     end,
 })
+
+-- Set colorcolumn to 100 for Python files
+-- Could also use a python.lua file at after/ftplugin but needs to be in root
+-- dir which doesn't work for my config structure
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "python",
+    callback = function()
+        vim.cmd("setlocal colorcolumn=100")
+    end,
+})

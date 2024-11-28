@@ -3,6 +3,8 @@ alias vim="nvim"
 alias gcd='cd `git rev-parse --show-toplevel`'
 alias greload='cd `git rev-parse --show-toplevel` && git checkout master && git pull'
 alias greloadf="git stash && git stash drop && greload"
+alias hawk="git stash"
+alias tuah="git stash drop"
 alias glog="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias devutil=". ~/repos/devutil/venv/bin/activate"
 alias dva="deactivate"
@@ -14,10 +16,10 @@ alias db="psql -h DUE2olyDB20L -U postgres"
 alias tls="tmux list-sessions"
 
 # ops
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
-alias ll='ls -alF'
-# alias bat="batcat"
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
+alias ll="ls -halF"
+alias cat="bat -pp"
 
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
 alias fhere="find . -name "
@@ -27,7 +29,7 @@ alias du="ncdu"
 alias h="history"
 alias iptlist="sudo iptables -L --line-numbers"
 alias fw="iptlist"
-alias ..="cdl .."
+alias ..="cl .."
 alias reload=". ~/.bashrc"
 
 function cl {
@@ -51,6 +53,38 @@ function va {
         fi
     done
     . $(poetry env info --path)/bin/activate
+}
+
+function et {
+    if [ -f ".env" ]; then
+        mv .env .env.bkp
+    elif [ -f ".env.bkp" ]; then
+        mv .env.bkp .env
+    fi
+}
+
+function run {
+    case "$(basename "$PWD")" in
+        "trade-ticket-service")
+            poetry run python -m trade_ticket_service
+            ;;
+        "trade-ticket-ui-23")
+            pnpm run dev
+            ;;
+        *)
+            echo "Not a recognized dir, nothing to do"
+            ;;
+    esac
+}
+
+function dockerbuild {
+    DIR=$(basename "$PWD")
+    docker build \
+        -f docker/Dockerfile \
+        -t ${DIR}-local:latest \
+        --build-arg GITLAB_USER=$GITLAB_USER \
+        --build-arg GITLAB_TOKEN=$GITLAB_TOKEN \
+        . 
 }
 
 function extract {
