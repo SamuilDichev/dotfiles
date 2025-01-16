@@ -10,7 +10,7 @@ return {
     config = function()
         local custom_keymap = require("samuild.keymap")
         local lspconfig = require("lspconfig")
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         require("mason").setup({})
         require("mason-lspconfig").setup({
@@ -74,7 +74,7 @@ return {
 
         lspconfig.ruff_lsp.setup {
             on_attach = function(client, bufnr)
-                if client.name == 'ruff_lsp' then
+                if client.name == "ruff_lsp" then
                     -- Disable hover in favor of Pyright
                     client.server_capabilities.hoverProvider = false
                 end
@@ -88,29 +88,34 @@ return {
         }
 
         lspconfig.volar.setup {
-            init_options = {
-                vue = {
-                    hybridMode = false,
-                },
-            },
+            capabilities = capabilities,
+            -- init_options = {
+            --     vue = {
+            --         hybridMode = false,
+            --     },
+            -- },
+            filetypes = { "vue" },
             on_attach = function(client)
                 -- Disable formatting, leave it to prettier
-                client.server_capabilities.documentFormattingProvider= false
+                client.server_capabilities.documentFormattingProvider = false
+                client.server_capabilities.documentRangeFormattingProvider = false
             end,
         }
 
         lspconfig.ts_ls.setup {
             capabilities = capabilities,
+            filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
             init_options = {
-                -- Requires:
+                -- Used to require:
                 -- npm install -g @vue/language-server
                 -- npm install -g @vue/typescript-plugin
+                -- Currently using exclusively via Mason so the above shouldn't be needed
                 plugins = {
                     {
+                        -- seems to only work with typescript 5+
                         name = "@vue/typescript-plugin",
-                        -- location = "/usr/local/lib/node_modules/@vue/language-server",
-                        location = "",
-                        languages = { "vue" },
+                        location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+                        languages = { "vue", },
                     },
                 },
             },
@@ -125,11 +130,11 @@ return {
             },
         })
 
-        vim.api.nvim_create_autocmd('LspAttach', {
-            group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+        vim.api.nvim_create_autocmd("LspAttach", {
+            group = vim.api.nvim_create_augroup("UserLspConfig", {}),
             callback = function(ev)
                 local bufnr = ev.buf
-                vim.bo[bufnr].omnifunc = 'v:lua.vim.lsp.omnifunc'
+                vim.bo[bufnr].omnifunc = "v:lua.vim.lsp.omnifunc"
                 custom_keymap.add_lsp_keymap_to_buffer(bufnr)
             end,
         })
