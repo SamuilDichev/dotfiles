@@ -12,20 +12,28 @@ return {
             presets = {
                 command_palette = true,
                 inc_rename = true,
+                long_message_to_split = true,
             },
             routes = {
                 -- hide messages containing these strings
-                { filter = { event = "msg_show", kind = "", find = "written", }, opts = { skip = true } },
-                { filter = { event = "msg_show", kind = "", find = "%d+ more line", }, opts = { skip = true } },
-                { filter = { event = "msg_show", kind = "", find = "%d+ fewer lines", }, opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "written", },          opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "%d+ more line", },    opts = { skip = true } },
+                { filter = { event = "msg_show", kind = "", find = "%d+ fewer lines", },  opts = { skip = true } },
                 { filter = { event = "msg_show", kind = "", find = "%d+ lines yanked", }, opts = { skip = true } },
             },
             lsp = {
-                hover = {
-                    enabled = false,
-                },
-                signature = {
-                    enabled = false,
+                -- hover = {
+                --     enabled = true,
+                -- },
+                -- signature = {
+                --     enabled = true,
+                -- },
+                override = {
+                    ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                    ["vim.lsp.util.stylize_markdown"] = true,
+                    -- ["cmp.entry.get_documentation"] = true,
+                    -- ["vim.lsp.handlers.hover"] = true,
+                    -- ["vim.lsp.handlers.signature_help"] = true,
                 },
             },
         }
