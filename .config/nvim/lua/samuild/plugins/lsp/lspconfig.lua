@@ -19,7 +19,7 @@ return {
                 "ts_ls",
                 "pyright",
                 "ruff",
-                "ruff_lsp",
+                -- "ruff_lsp",  -- deprecated in favor of just "ruff"
                 "volar",
                 -- "rust_analyzer",
                 -- "gopls@v0.11.0", -- For Golang version 1.16.15
@@ -72,9 +72,9 @@ return {
             },
         })
 
-        lspconfig.ruff_lsp.setup {
+        lspconfig.ruff.setup {
             on_attach = function(client, bufnr)
-                if client.name == "ruff_lsp" then
+                if client.name == "ruff" then
                     -- Disable hover in favor of Pyright
                     client.server_capabilities.hoverProvider = false
                 end
@@ -121,12 +121,18 @@ return {
             },
         }
 
-        -- For inline diagnostics - show only first line of the message
         vim.diagnostic.config({
+            -- inline diagnostics
             virtual_text = {
+                -- show only first line of the message
                 format = function(diagnostic)
                     return diagnostic.message:match("^[^\n]*")
                 end,
+            },
+            -- floating diagnostics
+            float = {
+                -- show lsp
+                source = true,
             },
         })
 
