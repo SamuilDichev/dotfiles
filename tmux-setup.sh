@@ -32,9 +32,10 @@ create_session() {
 
 }
 
-# General
 create_session "dotfiles" "$repos_path/dotfiles"
 create_session "General" "~"
-
-# Work
+create_session "Oly" "$repos_path/oly-lib" "$repos_path/oly-frontend"
+create_session "EMS/Core" "$repos_path/ems-service" "$repos_path/core-data-service"
 create_session "Trade Ticket" "$repos_path/trade-ticket-service" "$repos_path/trade-ticket-ui-23"
+create_session "TT Extras"  "$repos_path/order-handler-service" "$repos_path/trade-booker-service"
+create_session "Everest Explorer" "$repos_path/oly-everest-service" "$repos_path/oly-everest-data-producer" "$repos_path/everest-data-explorer-ui"

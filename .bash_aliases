@@ -10,8 +10,6 @@ alias devutil=". ~/repos/devutil/venv/bin/activate"
 alias dva="deactivate"
 alias prune="git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
 
-alias db="psql -h DUE2olyDB20L -U postgres"
-
 # tmux
 alias tls="tmux list-sessions"
 
@@ -53,38 +51,6 @@ function va {
         fi
     done
     . $(poetry env info --path)/bin/activate
-}
-
-function et {
-    if [ -f ".env" ]; then
-        mv .env .env.bkp
-    elif [ -f ".env.bkp" ]; then
-        mv .env.bkp .env
-    fi
-}
-
-function run {
-    case "$(basename "$PWD")" in
-        "trade-ticket-service")
-            poetry run python -m trade_ticket_service
-            ;;
-        "trade-ticket-ui-23")
-            pnpm run dev
-            ;;
-        *)
-            echo "Not a recognized dir, nothing to do"
-            ;;
-    esac
-}
-
-function dockerbuild {
-    DIR=$(basename "$PWD")
-    docker build \
-        -f docker/Dockerfile \
-        -t ${DIR}-local:latest \
-        --build-arg GITLAB_USER=$GITLAB_USER \
-        --build-arg GITLAB_TOKEN=$GITLAB_TOKEN \
-        . 
 }
 
 function extract {
