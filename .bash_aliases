@@ -9,6 +9,7 @@ alias glog="git log --graph --decorate --pretty=oneline --abbrev-commit"
 alias devutil=". ~/repos/devutil/venv/bin/activate"
 alias dva="deactivate"
 alias prune="git branch --merged >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches"
+alias open="explorer.exe"
 
 # tmux
 alias tls="tmux list-sessions"

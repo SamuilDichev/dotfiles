@@ -37,7 +37,8 @@ The remaining files/folders should be the actual dot files, i.e. files actually 
 ## Installation
 
 ### Aliases
-`ln -s <this-repo-path>/.bash_aliases ~/`
+- for bash - `ln -s <this-repo-path>/.bash_aliases ~/`
+- for zsh - `ln -s <this-repo-path>/.bash_aliases $ZSH_CUSTOM/aliases.zsh`
 
 ### Ruff config
 `ln -s <this-repo-path>/.config/ruff ~/.config/`
