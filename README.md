@@ -1,32 +1,10 @@
 # dotfiles
 
 ## Table of Contents
-* [General](#general)
-  - [Setup and development](#setup-and-development)
-  - [Contents to ignore](#contents-to-ignore)
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
   - [Neovim](#neovim)
   - [Tmux](#tmux)
-
-## General
-
-### Setup and development
-This repo has embedded submodules, i.e. repositories maintained by others that I'm merely re-using.
-This means cloning and updating is slightly different than normal
-
-- Clone this repo with -`git clone --recurse-submodules <this-repo-url>`
-- Update it with - `git pull --recurse-submodules`
-- Init submodules (_optional_, needed if repo was cloned without them) - `git submodule update --init --recursive`
-
-### Contents to ignore
-These files are related to configuration or documentation of the repo and are not files you should need to concern yourself with
-- submodules/
-- .gitignore
-- .gitmodules
-- README.md
-
-The remaining files/folders should be the actual dot files, i.e. files actually used in the configuration of various apps
 
 ## Prerequisites
 - [ripgrep](https://github.com/BurntSushi/ripgrep#installation)
@@ -48,6 +26,5 @@ The remaining files/folders should be the actual dot files, i.e. files actually 
 - Setup config - `ln -s <this-repo-path>/.config/nvim ~/.config/`
 
 ### Tmux
-Config based on https://github.com/gpakosz/.tmux which is included as a submodule
-- Install Tmux
+- Install version >= 3.2
 - Setup config - `ln -s <this-repo-path>/.config/tmux ~/.config/`
