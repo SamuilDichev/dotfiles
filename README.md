@@ -28,3 +28,4 @@
 ### Tmux
 - Install version >= 3.2
 - Setup config - `ln -s <this-repo-path>/.config/tmux ~/.config/`
+- Setup TPM (plugin manager) - `git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm`
