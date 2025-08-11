@@ -59,14 +59,31 @@ end
 -- LSP keymap for suggestions drop-down - imported by cmp config
 M.add_lsp_suggestion_keymap = function(cmp)
     local cmp_select = { behavior = cmp.SelectBehavior.Select }
+    local luasnip = require("luasnip")
+
     return {
         -- ['<C-Space>'] = cmp.mapping.complete(), -- starts auto-completing
-        ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select), -- cycle back through suggestions
-        ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),   -- cycle forward through suggestions
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select), -- cycle back through suggestions
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),   -- cycle forward through suggestions
         ['<cr>'] = cmp.mapping.confirm({
             behavior = cmp.ConfirmBehavior.Insert,
             select = false,
         }),
+        -- Jump through snippet args
+        ['<Tab>'] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, { "i", "s" }),
     }
 end
 
