@@ -9,7 +9,6 @@ return {
     },
     config = function()
         local custom_keymap = require("samuild.keymap")
-        local lspconfig = require("lspconfig")
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         require("mason").setup({})
@@ -37,13 +36,12 @@ return {
         end
 
         -- Servers with default setup
-        -- local default_setup_servers = { "ruff", "rust_analyzer", "gopls" }
-        local default_setup_servers = { "ruff", }
-        for _, server in ipairs(default_setup_servers) do
-            lspconfig[server].setup({ capabilities = capabilities })
-        end
+        -- local default_setup_servers = { "ruff", }
+        -- for _, server in ipairs(default_setup_servers) do
+        --     lspconfig[server].setup({ capabilities = capabilities })  -- deprecated, use vim.lsp.config
+        -- end
 
-        lspconfig.lua_ls.setup({
+        vim.lsp.config("lua_ls", {
             settings = {
                 Lua = {
                     telemetry = { enable = false },
@@ -53,9 +51,10 @@ return {
                 },
             },
         })
+        vim.lsp.enable({"lua_ls"})
 
         -- Servers with special setup
-        lspconfig.pyright.setup({
+        vim.lsp.config("pyright", {
             capabilities = capabilities,
             settings = {
                 disableOrganizeImports = true,
@@ -71,8 +70,9 @@ return {
                 }
             },
         })
+        vim.lsp.enable({"pyright"})
 
-        lspconfig.ruff.setup {
+        vim.lsp.config("ruff", {
             on_attach = function(client, bufnr)
                 if client.name == "ruff" then
                     -- Disable hover in favor of Pyright
@@ -85,9 +85,10 @@ return {
                     args = {},
                 }
             }
-        }
+        })
+        vim.lsp.enable({"ruff"})
 
-        lspconfig.volar.setup {
+        vim.lsp.config("volar", {
             capabilities = capabilities,
             -- init_options = {
             --     vue = {
@@ -100,9 +101,10 @@ return {
                 client.server_capabilities.documentFormattingProvider = false
                 client.server_capabilities.documentRangeFormattingProvider = false
             end,
-        }
+        })
+        vim.lsp.enable({"ruff"})
 
-        lspconfig.ts_ls.setup {
+        vim.lsp.config("ts_ls", {
             capabilities = capabilities,
             filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
             init_options = {
@@ -119,7 +121,8 @@ return {
                     },
                 },
             },
-        }
+        })
+        vim.lsp.enable({"ts_ls"})
 
         vim.diagnostic.config({
             -- inline diagnostics

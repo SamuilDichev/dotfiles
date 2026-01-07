@@ -18,7 +18,7 @@ alias tls="tmux list-sessions"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias ll="ls -halF"
-alias cat="bat -pp"
+alias bat="batcat -pp"
 
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
 alias fhere="find . -name "
