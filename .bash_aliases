@@ -53,14 +53,13 @@ function va {
     . $(poetry env info --path)/bin/activate
 }
 
-function bat {
+function cat {
     if command -v bat >/dev/null 2>&1; then
         command bat -pp "$@"
     elif command -v batcat >/dev/null 2>&1; then
         command batcat -pp "$@"
     else
-        echo Error: batcat is not installed. >&2
-        return 1
+        command cat "$@"
     fi
 }
 
