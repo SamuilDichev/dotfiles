@@ -18,7 +18,6 @@ alias tls="tmux list-sessions"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 alias ll="ls -halF"
-alias bat="batcat -pp"
 
 alias ch="cat ~/.bash_aliases | grep -P '#|alias|function'"
 alias fhere="find . -name "
@@ -52,6 +51,17 @@ function va {
         fi
     done
     . $(poetry env info --path)/bin/activate
+}
+
+function bat {
+    if command -v bat >/dev/null 2>&1; then
+        command bat -pp "$@"
+    elif command -v batcat >/dev/null 2>&1; then
+        command batcat -pp "$@"
+    else
+        echo Error: batcat is not installed. >&2
+        return 1
+    fi
 }
 
 function extract {
