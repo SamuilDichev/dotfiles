@@ -19,7 +19,7 @@ return {
                 "pyright",
                 "ruff",
                 -- "ruff_lsp",  -- deprecated in favor of just "ruff"
-                "volar",
+                -- "volar",
                 -- "rust_analyzer",
                 -- "gopls@v0.11.0", -- For Golang version 1.16.15
             }
@@ -88,21 +88,21 @@ return {
         })
         vim.lsp.enable({"ruff"})
 
-        vim.lsp.config("volar", {
-            capabilities = capabilities,
-            -- init_options = {
-            --     vue = {
-            --         hybridMode = false,
-            --     },
-            -- },
-            filetypes = { "vue" },
-            on_attach = function(client)
-                -- Disable formatting, leave it to prettier
-                client.server_capabilities.documentFormattingProvider = false
-                client.server_capabilities.documentRangeFormattingProvider = false
-            end,
-        })
-        vim.lsp.enable({"ruff"})
+        -- vim.lsp.config("volar", {
+        --     capabilities = capabilities,
+        --     -- init_options = {
+        --     --     vue = {
+        --     --         hybridMode = false,
+        --     --     },
+        --     -- },
+        --     filetypes = { "vue" },
+        --     on_attach = function(client)
+        --         -- Disable formatting, leave it to prettier
+        --         client.server_capabilities.documentFormattingProvider = false
+        --         client.server_capabilities.documentRangeFormattingProvider = false
+        --     end,
+        -- })
+        -- vim.lsp.enable({"volar"})
 
         vim.lsp.config("ts_ls", {
             capabilities = capabilities,
